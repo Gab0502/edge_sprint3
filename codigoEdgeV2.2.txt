@@ -15,6 +15,7 @@
 #include "Arduino.h"
 #include "WiFi.h"             // WiFi Library
 #include <HTTPClient.h>
+#include <Servo.h>
 
 
 //************************************************************************
@@ -41,11 +42,15 @@ HTTPClient client;
 int rpm_sensor = 5;
 int trigger = 2;
 int echo = 4;
+int sens_agua = 13;
+int servoPin = 12;
+Servo motor;
 
 unsigned long counter;
 volatile int holes;
 float dist;
 int rpm;
+int humidity;
 
 
 
@@ -59,8 +64,12 @@ void setup(){
   pinMode(rpm_sensor, INPUT);
   pinMode(trigger, OUTPUT);
   pinMode(echo,INPUT);
-  attachInterrupt(digitalPinToInterrupt(rpm_sensor),count,FALLING); // utilizado para o 
+  pinMode(sens_agua,INPUT);
+  pinMode(servoPin,OUTPUT);
+  motor.attach(servoPin);
+  attachInterrupt(digitalPinToInterrupt(rpm_sensor),count,FALLING); // utilizado para o realizar a contagem da rotação por   minuto
   init_wifi();
+  motor.write(90); // mantem servo motor na horizontal, sensor ultrassonico estará exposto
 }
 
 
@@ -139,12 +148,26 @@ void count(){
   holes++;
 }
 
+void protection(void){
+  motor.write(0); // faz com que servo fica na vertical, irá deixar sensor ultrassonico protegido
+  delay(300000); //fará o sistema ficar em pausa por 5 minutos com ele totalmente fechado, assim ele estará protegido por 
+  //um periodo
+
+  //testa caso realmente esteja em situação de enchente, caso esteja ficará em loop até o sensor de umidade não estar mais 
+  //submergido em água
+  while(humidity>200){ 
+  Serial.println
+}
+  motor.write(90) // volta a posição inicial após
+}
+
 
 //***********************************************************************************************************
 // calculating rpm and distance, also calling functions / calculando rpm e distancia, tambem chamando funções
 //***********************************************************************************************************
 
 void loop(){
+  humidity = analogRead(sens_agua)
   if (millis() - counter > 1000){
   rpm = (holes/12.0)*60;
   holes = 0;
@@ -154,6 +177,9 @@ void loop(){
   dist = dist/58;
   send_rpm();
   send_dist();
+  if (dist<=10){   //esse valor deve ser ajustado, ele será o altura limite em que o sensor vai funcionar antes de tentar se proteger
+  protection();
+}
   delay(5000);
 
 }
