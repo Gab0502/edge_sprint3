@@ -36,7 +36,7 @@ HTTPClient client;
 
 
 //************************************************************************
-// Maping ports and varibles / Mapeando ports e variaveis
+// Maping ports and variables / Mapeando ports e variaveis
 //************************************************************************
 
 int rpm_sensor = 5;
