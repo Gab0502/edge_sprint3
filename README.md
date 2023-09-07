@@ -69,3 +69,23 @@ Quando o fluxo de água faz a roda externa (2) girar, seguindo a lei da velocida
   <br>
   <figurecaption>sistema de proteção desativado</figurecaption>
 </figure>
+<br>
+<figure>
+  <img src="https://github.com/Gab0502/edge_sprint3/assets/104799843/f113bcb4-7dc0-4ada-b2f0-48780abd1f53">
+  <br>
+  <figurecaption>sistema de proteção ativado</figurecaption>
+</figure>
+<br>
+<p>
+O sensor de nível de água é um dispositivo de funcionamento simples. Ele consiste em um sensor ultrassônico (1.) posicionado dentro de uma caixa com pequenos orifícios, permitindo que o som seja emitido e retornado para medir a distância entre o sensor e a água. Esta caixa também abriga o ESP32 (4.), localizado em um compartimento separado para maior proteção em caso de enchentes.
+
+Para evitar que a água entre em contato com o sistema, implementamos uma função de proteção. O sensor ultrassônico inicialmente faz leituras. Se a água atingir uma altura específica, que pode variar de acordo com o tamanho do esgoto, o sistema ativa a função de proteção. Um servo motor entra em ação, empurrando uma placa de material leve e sólido, como acrílico, para cobrir os pequenos orifícios. Essa placa também possui uma camada de borracha ao redor para proporcionar uma barreira adicional contra a entrada de água.
+
+O sistema permanece em modo de proteção com sua entrada bloqueada por 5 minutos. Após esse período, o sensor de profundidade de água (2.) verifica se a caixa ainda está submersa. Se detectar que a caixa está embaixo d'água, o sistema continua em modo de proteção até que não haja mais detecção de submersão. Se a detecção inicial de altura for causada apenas por um objeto grande que tenha passado pelo esgoto, após os primeiros 5 minutos de verificação para garantir a integridade do sistema, o sensor não detectará mais água e retornará ao funcionamento normal."
+</p>
+
+
+
+
+
+
