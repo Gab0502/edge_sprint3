@@ -84,6 +84,12 @@ Para evitar que a água entre em contato com o sistema, implementamos uma funç�
 O sistema permanece em modo de proteção com sua entrada bloqueada por 5 minutos. Após esse período, o sensor de profundidade de água (2.) verifica se a caixa ainda está submersa. Se detectar que a caixa está embaixo d'água, o sistema continua em modo de proteção até que não haja mais detecção de submersão. Se a detecção inicial de altura for causada apenas por um objeto grande que tenha passado pelo esgoto, após os primeiros 5 minutos de verificação para garantir a integridade do sistema, o sensor não detectará mais água e retornará ao funcionamento normal."
 </p>
 
+<h2>Integrantes</h2>
+<p>Caíque Walter Silva - RM 550693</p>
+<p>Enrico Enricco Rossi - RM 551717</p>
+<p>Gabriel Marquez Trevisan - RM 99227</p>
+<p>Guilherme Nobre Bernardo - RM 908604</p>
+<p>Silvia Kavabata - RM 97650</p>
 
 
 
