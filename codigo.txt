@@ -19,15 +19,15 @@
 
 
 //************************************************************************
-// Espr32 configuration / Configuração Espr32
+// esp32 configuration / Configuração esp32
 //************************************************************************
 
 #define APP_NAME    "IoT Tago+Wifi"
 #define APP_VERSION "1.0.0"
 #define SEPARATOR_LINE "****************************************************"
 
-char wifiSsid[] = "SSID"; // Nome da rede wifi que espr32 irá se conectar
-char wifiPass[] = "PASS";     // Senha da rede wifi que espr32 irá se conectar
+char wifiSsid[] = "SSID"; // Nome da rede wifi que esp32 irá se conectar
+char wifiPass[] = "PASS";     // Senha da rede wifi que esp32 irá se conectar
 
 char serverAddress[] = "https://api.tago.io/data";  // TagoIO address
 char contentHeader[] = "application/json";
@@ -40,7 +40,7 @@ HTTPClient client;
 //************************************************************************
 
 int rpm_sensor = 5;
-int trigger = 2;
+int trigger = 3;
 int echo = 4;
 int sens_agua = 13;
 int servoPin = 12;
@@ -74,7 +74,7 @@ void setup(){
 
 
 //************************************************************************
-// Connecting espr32 to wifi / Conectando espr32 ao wifi
+// Connecting esp32 to wifi / Conectando esp32 ao wifi
 //************************************************************************
 
 void init_wifi(void) {
