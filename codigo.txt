@@ -14,6 +14,7 @@
 #include <Arduino.h>
 #include <EspMQTTClient.h>
 #include <ArduinoJson.h>
+#include <ESP32Servo.h>
 
 //************************************************************************
 // esp32 configuration / Configuração esp32
@@ -50,6 +51,10 @@ float dist;
 int rpm;
 char dadosJson[100];
 
+int servoPin = 17;
+
+Servo servoMotor;
+
 //************************************************************************
 // Initial setup / Configuração inicial
 //************************************************************************
@@ -58,6 +63,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
+  servoMotor.attach(servoPin);
   attachInterrupt(digitalPinToInterrupt(echo), count, FALLING);
 }
 
@@ -104,6 +110,7 @@ void protection() {
 //***********************************************************************************************************
 
 void loop() {
+  servoMotor.write(90);
   digitalWrite(trigger, LOW);
   delayMicroseconds(10);
   digitalWrite(trigger, HIGH);
@@ -121,6 +128,7 @@ void loop() {
   send_dist();
 
   if (dist <= 10) {
+    servoMotor.write(180);
     protection();
   }
 
